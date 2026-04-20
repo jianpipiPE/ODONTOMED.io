@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - OdontoMed</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+
+        .sidebar {
+            height: 100vh;
+            background: #0d6efd;
+            color: white;
+        }
+
+        .sidebar a {
+            color: white;
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #0b5ed7;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- 🔵 SIDEBAR -->
+        <div class="col-md-2 sidebar">
+            <h4 class="text-center py-3">🦷 Admin</h4>
+
+            <a href="/admin"><i class="fa fa-home"></i> Panel</a>
+            <a href="/"><i class="fa fa-globe"></i> Ver Web</a>
+            <a href="/logout"><i class="fa fa-sign-out-alt"></i> Salir</a>
+        </div>
+
+        <!-- 🧑‍💼 CONTENIDO -->
+        <div class="col-md-10 p-4">
+
+            <h2 class="mb-4">Panel de Administración</h2>
+
+            <div class="row">
+
+                <!-- 👤 CREAR USUARIO -->
+                <div class="col-md-6">
+                    <div class="card shadow p-4">
+                        <h5><i class="fa fa-user-plus"></i> Crear Usuario</h5>
+
+                        <form action="/admin/crear" method="post">
+
+                            <div class="mb-2">
+                                <label>Nombre</label>
+                                <input name="nombre" class="form-control" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label>Email</label>
+                                <input name="email" type="email" class="form-control" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label>Contraseña</label>
+                                <input name="password" type="password" class="form-control" required>
+                            </div>
+
+                            <button class="btn btn-primary w-100 mt-2">
+                                <i class="fa fa-save"></i> Crear Usuario
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 📤 SUBIR DOCUMENTO -->
+                <div class="col-md-6">
+                    <div class="card shadow p-4">
+                        <h5><i class="fa fa-upload"></i> Subir Ecografía</h5>
+
+                        <form action="/admin/subir" method="post" enctype="multipart/form-data">
+
+                            <div class="mb-2">
+                                <label>Archivo</label>
+                                <input type="file" name="file" class="form-control" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label>ID Usuario</label>
+                                <input type="number" name="usuarioId" class="form-control" required>
+                            </div>
+
+                            <button class="btn btn-success w-100 mt-2">
+                                <i class="fa fa-upload"></i> Subir Archivo
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 📋 LISTA DE USUARIOS -->
+            <div class="card shadow p-4 mt-4">
+                <h5><i class="fa fa-users"></i> Usuarios Registrados</h5>
+
+                <table class="table table-striped mt-3">
+                    <thead class="table-primary">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="u : ${usuarios}">
+                        <td th:text="${u.id}"></td>
+                        <td th:text="${u.nombre}"></td>
+                        <td th:text="${u.email}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

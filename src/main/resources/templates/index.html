@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>OdontoMed</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero-text {
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            transition: 0.3s;
+        }
+
+        footer {
+            background: #0d6efd;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🔵 NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container">
+        <a class="navbar-brand fw-bold">🦷 OdontoMed</a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="menu" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
+                <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li class="nav-item"><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                <li class="nav-item"><a href="#eventos" class="nav-link">Eventos</a></li>
+                <li class="nav-item">
+                    <!-- 🔓 SI NO ESTÁ LOGUEADO -->
+                    <div sec:authorize="!isAuthenticated()">
+                        <a href="/login" class="btn btn-light">Ingresar</a>
+                    </div>
+
+                    <!-- 🔐 SI ESTÁ LOGUEADO -->
+                    <div sec:authorize="isAuthenticated()" class="d-flex align-items-center">
+
+                        <span class="text-white fw-bold" th:text="${usuario.nombre}"></span>
+
+                        <span sec:authorize="hasRole('ADMIN')" class="badge bg-warning ms-2">ADMIN</span>
+                        <span sec:authorize="hasRole('USER')" class="badge bg-info ms-2">USER</span>
+
+                        <a href="/logout" class="btn btn-danger btn-sm ms-3">Salir</a>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 🎞️ CARRUSEL -->
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <img src="/img/clinica1.jpg" class="d-block w-100" height="500">
+            <div class="carousel-caption">
+                <div class="hero-text">
+                    <h2>Tu sonrisa en buenas manos</h2>
+                    <p>Atención dental profesional y moderna</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="/img/clinica2.jpg" class="d-block w-100" height="500">
+        </div>
+
+        <div class="carousel-item">
+            <img src="/img/clinica3.jpg" class="d-block w-100" height="500">
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+
+<!-- 🦷 SERVICIOS -->
+<section id="servicios" class="container mt-5">
+    <h2 class="text-center mb-4">Nuestros Servicios</h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <img src="/img/ortodoncia.jpg" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Ortodoncia</h5>
+                    <p>Corrección y alineación dental</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <img src="/img/limpieza.jpg" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Limpieza Dental</h5>
+                    <p>Salud bucal completa</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <img src="/img/implantes.jpg" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>Implantes</h5>
+                    <p>Soluciones modernas y seguras</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 👨‍⚕️ NOSOTROS -->
+<section id="nosotros" class="bg-light mt-5 p-5 text-center">
+    <div class="container">
+        <h2>Sobre Nosotros</h2>
+        <p>
+            En OdontoMed contamos con especialistas altamente capacitados y tecnología moderna
+            para brindarte la mejor atención dental.
+        </p>
+    </div>
+</section>
+
+<!-- 📅 EVENTOS -->
+<section id="eventos" class="container mt-5">
+    <h2 class="text-center mb-4">Eventos</h2>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card shadow p-3">
+                <h5>Campaña gratuita</h5>
+                <p>Atención dental sin costo para niños</p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow p-3">
+                <h5>Charlas de salud</h5>
+                <p>Educación sobre higiene bucal</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 📞 FOOTER -->
+<footer class="mt-5 p-4 text-center">
+    <p>📍 Dirección: Lima, Perú</p>
+    <p>📞 Teléfono: 987654321</p>
+    <p>© 2026 OdontoMed - Todos los derechos reservados</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
