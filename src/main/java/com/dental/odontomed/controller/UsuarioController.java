@@ -1,7 +1,7 @@
 package com.dental.odontomed.controller;
 
-import com.dental.odontomed.model.Documento;
-import com.dental.odontomed.model.Usuario;
+import com.dental.odontomed.entity.Documento;
+import com.dental.odontomed.entity.Usuario;
 import com.dental.odontomed.repository.DocumentosRepository;
 import com.dental.odontomed.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

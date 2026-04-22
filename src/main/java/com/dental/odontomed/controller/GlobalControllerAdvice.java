@@ -1,7 +1,7 @@
 package com.dental.odontomed.controller;
 
 import org.springframework.ui.Model;
-import com.dental.odontomed.model.Usuario;
+import com.dental.odontomed.entity.Usuario;
 import com.dental.odontomed.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<!-- 📅 EVENTOS -->
+<div class="container mt-5">
+
+    <div class="row g-4">
+
+        <!-- EVENTO 1 -->
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Campaña Gratuita</h5>
+                <p>Atención dental sin costo para niños de bajos recursos.</p>
+                <span class="badge bg-success">Disponible</span>
+            </div>
+        </div>
+
+        <!-- EVENTO 2 -->
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Charlas Educativas</h5>
+                <p>Aprende sobre higiene bucal y prevención.</p>
+                <span class="badge bg-primary">Próximamente</span>
+            </div>
+        </div>
+
+        <!-- EVENTO 3 -->
+        <div class="col-md-4">
+            <div class="card shadow p-3">
+                <h5>Descuentos Especiales</h5>
+                <p>Promociones en tratamientos dentales.</p>
+                <span class="badge bg-warning text-dark">Limitado</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

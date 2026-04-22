@@ -1,4 +1,4 @@
-package com.dental.odontomed.model;
+package com.dental.odontomed.entity;
 
 import jakarta.persistence.*;
 

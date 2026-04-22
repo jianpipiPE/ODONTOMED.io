@@ -28,162 +28,208 @@
             background: #0d6efd;
             color: white;
         }
+        .boton-agendar {
+            background-color: #0d6efd;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            width: auto;
+            max-width: 180px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .boton-agendar:hover {
+            background-color: #ff8c2a;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .boton-agendar {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .boton-agendar:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .servicio-card {
+            transition: all 0.3s ease;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            background: #5c84d6 !important;
+        }
     </style>
 </head>
 
 <body>
 
 <!-- 🔵 NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
-    <div class="container">
-        <a class="navbar-brand fw-bold">🦷 OdontoMed</a>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-            <span class="navbar-toggler-icon"></span>
+<!-- 🎞️ HERO CON CARRUSEL -->
+<section id="inicio">
+
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+
+            <!-- IMAGEN 1 -->
+            <div class="carousel-item active">
+                <img src="img/portada1.png" class="d-block w-100" style="height: 90vh; object-fit: cover;">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center h-100">
+                    <h1 class="fw-bold">Tu sonrisa en buenas manos</h1>
+                    <p>Atención dental profesional y moderna</p>
+                    <a href="#contacto" class="boton-agendar mt-3">Agendar cita</a>
+                </div>
+            </div>
+
+            <!-- IMAGEN 2 -->
+            <div class="carousel-item">
+                <img src="img/portada2.jpg" class="d-block w-100" style="height: 90vh; object-fit: cover;">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center h-100">
+                    <h1 class="fw-bold">Tecnología de última generación</h1>
+                    <p>Equipos modernos para tu salud dental</p>
+                    <a href="#contacto" class="boton-agendar mt-3" >Agendar cita</a>
+                </div>
+            </div>
+
+            <!-- IMAGEN 3 -->
+            <div class="carousel-item">
+                <img src="img/portada4.jpg" class="d-block w-100" style="height: 90vh; object-fit: cover;">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-center h-100">
+                    <h1 class="fw-bold">Confianza y calidad</h1>
+                    <p>Especialistas comprometidos contigo</p>
+                    <a href="#contacto" class="boton-agendar mt-3">Agendar cita</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CONTROLES -->
+        <button class="carousel-control-prev" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
         </button>
 
-        <div id="menu" class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
-                <li class="nav-item"><a href="#servicios" class="nav-link">Servicios</a></li>
-                <li class="nav-item"><a href="#nosotros" class="nav-link">Nosotros</a></li>
-                <li class="nav-item"><a href="#eventos" class="nav-link">Eventos</a></li>
-                <li class="nav-item">
-                    <!-- 🔓 SI NO ESTÁ LOGUEADO -->
-                    <div sec:authorize="!isAuthenticated()">
-                        <a href="/login" class="btn btn-light">Ingresar</a>
-                    </div>
-
-                    <!-- 🔐 SI ESTÁ LOGUEADO -->
-                    <div sec:authorize="isAuthenticated()" class="d-flex align-items-center">
-
-                        <span class="text-white fw-bold" th:text="${usuario.nombre}"></span>
-
-                        <span sec:authorize="hasRole('ADMIN')" class="badge bg-warning ms-2">ADMIN</span>
-                        <span sec:authorize="hasRole('USER')" class="badge bg-info ms-2">USER</span>
-
-                        <a href="/logout" class="btn btn-danger btn-sm ms-3">Salir</a>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- 🎞️ CARRUSEL -->
-<div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-
-        <div class="carousel-item active">
-            <img src="/img/clinica1.jpg" class="d-block w-100" height="500">
-            <div class="carousel-caption">
-                <div class="hero-text">
-                    <h2>Tu sonrisa en buenas manos</h2>
-                    <p>Atención dental profesional y moderna</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="/img/clinica2.jpg" class="d-block w-100" height="500">
-        </div>
-
-        <div class="carousel-item">
-            <img src="/img/clinica3.jpg" class="d-block w-100" height="500">
-        </div>
+        <button class="carousel-control-next" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
 
     </div>
 
-    <button class="carousel-control-prev" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-
-    <button class="carousel-control-next" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
-</div>
-
-<!-- 🦷 SERVICIOS -->
-<section id="servicios" class="container mt-5">
-    <h2 class="text-center mb-4">Nuestros Servicios</h2>
-
-    <div class="row">
-
-        <div class="col-md-4">
-            <div class="card shadow">
-                <img src="/img/ortodoncia.jpg" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5>Ortodoncia</h5>
-                    <p>Corrección y alineación dental</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card shadow">
-                <img src="/img/limpieza.jpg" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5>Limpieza Dental</h5>
-                    <p>Salud bucal completa</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card shadow">
-                <img src="/img/implantes.jpg" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5>Implantes</h5>
-                    <p>Soluciones modernas y seguras</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </section>
 
-<!-- 👨‍⚕️ NOSOTROS -->
-<section id="nosotros" class="bg-light mt-5 p-5 text-center">
+<!-- iconos -->
+<section class="py-5" style="background:#0d47a1;">
     <div class="container">
-        <h2>Sobre Nosotros</h2>
-        <p>
-            En OdontoMed contamos con especialistas altamente capacitados y tecnología moderna
-            para brindarte la mejor atención dental.
-        </p>
+
+        <!-- TÍTULO -->
+        <h2 class="text-white text-center mb-5">
+            Conoce nuestros <strong>servicios odontológicos</strong>
+        </h2>
+
+        <!-- CARDS -->
+        <div class="row g-4">
+
+            <!-- CARD 1 -->
+            <div class="col-md-4">
+                <div class="p-4 h-100 text-white rounded-4" style="background:#3f6bb3; position: relative;">
+
+                    <h4 class="fw-bold">Ortodoncia</h4>
+                    <p>
+                        Alinea tus dientes con tratamientos modernos y seguros.
+                    </p>
+
+                    <a href="#" class="text-white fw-bold text-decoration-none">
+                        VER MÁS →
+                    </a>
+
+                    <img src="img/ortodoncia.png"
+                         style="width:80px; position:absolute; bottom:10px; right:10px;">
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="col-md-4">
+                <div class="p-4 h-100 text-white rounded-4" style="background:#3f6bb3; position: relative;">
+
+                    <h4 class="fw-bold">Limpieza Dental</h4>
+                    <p>
+                        Elimina sarro y bacterias para una sonrisa saludable.
+                    </p>
+
+                    <a href="#" class="text-white fw-bold text-decoration-none">
+                        DESCUBRIR →
+                    </a>
+
+                    <img src="img/limpieza.png"
+                         style="width:80px; position:absolute; bottom:10px; right:10px;">
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="col-md-4">
+                <div class="p-4 h-100 text-white rounded-4" style="background:#3f6bb3; position: relative;">
+
+                    <h4 class="fw-bold">Implantes Dentales</h4>
+                    <p>
+                        Recupera tu sonrisa con tecnología avanzada.
+                    </p>
+
+                    <a href="#" class="text-white fw-bold text-decoration-none">
+                        INICIAR →
+                    </a>
+
+                    <img src="img/implante.png"
+                         style="width:80px; position:absolute; bottom:10px; right:10px;">
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
+<!-- FORMULARIO -->
+<section id="contacto" class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <h2 class="text-center mb-4 text-primary fw-bold">Agendar Cita vía correo</h2>
 
-<!-- 📅 EVENTOS -->
-<section id="eventos" class="container mt-5">
-    <h2 class="text-center mb-4">Eventos</h2>
+                <form action="/contacto" method="post" class="bg-white p-5 rounded-4 shadow-lg">
 
-    <div class="row">
+                    <div class="mb-3">
+                        <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Nombre completo" required>
+                    </div>
 
-        <div class="col-md-6">
-            <div class="card shadow p-3">
-                <h5>Campaña gratuita</h5>
-                <p>Atención dental sin costo para niños</p>
+                    <div class="mb-3">
+                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Correo electrónico" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <textarea name="mensaje" class="form-control form-control-lg" rows="4" placeholder="Tu mensaje..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 fw-bold">
+                        Enviar mensaje
+                    </button>
+
+                </form>
+
+                <div th:if="${param.ok}" class="alert alert-success text-center mt-3">
+                    ✅ Mensaje enviado correctamente
+                </div>
             </div>
         </div>
-
-        <div class="col-md-6">
-            <div class="card shadow p-3">
-                <h5>Charlas de salud</h5>
-                <p>Educación sobre higiene bucal</p>
-            </div>
-        </div>
-
     </div>
 </section>
-
 <!-- 📞 FOOTER -->
-<footer class="mt-5 p-4 text-center">
-    <p>📍 Dirección: Lima, Perú</p>
-    <p>📞 Teléfono: 987654321</p>
-    <p>© 2026 OdontoMed - Todos los derechos reservados</p>
-</footer>
-
+<div th:replace="fragments/footer :: footer"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
