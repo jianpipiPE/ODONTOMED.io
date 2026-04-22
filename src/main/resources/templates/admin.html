@@ -139,6 +139,25 @@
 
     </div>
 </div>
+<h3>Documentos subidos</h3>
 
+<table class="table">
+    <tr>
+        <th>Usuario</th>
+        <th>Documento</th>
+        <th>Acción</th>
+    </tr>
+
+    <tr th:each="doc : ${documentos}">
+        <td th:text="${doc.usuario.nombre}"></td>
+        <td th:text="${doc.nombre}"></td>
+        <td>
+            <a th:href="@{'/' + ${doc.ruta}}" target="_blank"
+               class="btn btn-success btn-sm">
+                Ver
+            </a>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

@@ -23,9 +23,12 @@ public class AdminController {
     @Autowired
     private DocumentosRepository documentoRepo;
 
-    @GetMapping
-    public String panel(Model model){
+    @GetMapping("")
+    public String panel(Model model) {
+
         model.addAttribute("usuarios", usuarioRepo.findAll());
+        model.addAttribute("documentos", documentoRepo.findAll());
+
         return "admin";
     }
 
@@ -44,11 +47,12 @@ public class AdminController {
     }
 
     @PostMapping("/subir")
-    public String subir(@RequestParam("file") MultipartFile file,
-                        @RequestParam Long usuarioId) throws Exception {
+    public String subirArchivo(@RequestParam("file") MultipartFile file,
+                               @RequestParam("usuarioId") Long usuarioId) throws Exception {
 
         String carpeta = "uploads/";
         File dir = new File(carpeta);
+
         if (!dir.exists()) dir.mkdirs();
 
         String ruta = carpeta + file.getOriginalFilename();
@@ -65,23 +69,6 @@ public class AdminController {
 
         return "redirect:/admin";
     }
-    @Controller
-    public class PageController {
 
-        @GetMapping("/servicios")
-        public String servicios() {
-            return "servicios";
-        }
-
-        @GetMapping("/nosotros")
-        public String nosotros() {
-            return "nosotros";
-        }
-
-        @GetMapping("/eventos")
-        public String eventos() {
-            return "eventos";
-        }
-    }
 
 }
