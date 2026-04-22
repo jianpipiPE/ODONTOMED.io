@@ -76,7 +76,7 @@
                     </td>
 
                     <td>
-                        <a th:href="@{/${doc.ruta}}" target="_blank" class="btn btn-sm btn-success">
+                        <a th:href="@{'/' + ${doc.ruta}}" target="_blank" class="btn btn-primary">
                             <i class="fa fa-eye"></i> Ver
                         </a>
                     </td>
@@ -102,21 +102,6 @@
     </div>
 
 </div>
-<h3>Mis documentos</h3>
 
-<div class="row">
-    <div class="col-md-4" th:each="doc : ${documentos}">
-        <div class="card p-3 shadow">
-
-            <h5 th:text="${doc.nombre}"></h5>
-
-            <a th:href="@{'/' + ${doc.ruta}}" target="_blank"
-               class="btn btn-primary">
-                Ver archivo
-            </a>
-
-        </div>
-    </div>
-</div>
 </body>
 </html>
