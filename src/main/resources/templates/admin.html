@@ -135,29 +135,49 @@
                 </table>
             </div>
 
+            <!-- 📄 DOCUMENTOS SUBIDOS -->
+            <div class="card shadow p-4 mt-4">
+                <h5><i class="fa fa-file-pdf"></i> Documentos Subidos</h5>
+
+                <div th:if="${documentos.isEmpty()}" class="alert alert-info mt-3">
+                    <i class="fa fa-info-circle"></i> No hay documentos subidos aún.
+                </div>
+
+                <div th:if="${!documentos.isEmpty()}">
+                    <table class="table table-striped mt-3">
+                        <thead class="table-success">
+                        <tr>
+                            <th><i class="fa fa-user"></i> Usuario</th>
+                            <th><i class="fa fa-file"></i> Documento</th>
+                            <th><i class="fa fa-cogs"></i> Acción</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="doc : ${documentos}">
+                            <td th:text="${doc.usuario.nombre}"></td>
+                            <td>
+                                <i class="fa fa-file-pdf text-danger"></i>
+                                <span th:text="${doc.nombre}"></span>
+                            </td>
+                            <td>
+                                <a th:href="@{'/' + ${doc.ruta}}" target="_blank" class="btn btn-sm btn-success">
+                                    <i class="fa fa-eye"></i> Ver
+                                </a>
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
     </div>
 </div>
-<h3>Documentos subidos</h3>
 
-<table class="table">
-    <tr>
-        <th>Usuario</th>
-        <th>Documento</th>
-        <th>Acción</th>
-    </tr>
-
-    <tr th:each="doc : ${documentos}">
-        <td th:text="${doc.usuario.nombre}"></td>
-        <td th:text="${doc.nombre}"></td>
-        <td>
-            <a th:href="@{'/' + ${doc.ruta}}" target="_blank"
-               class="btn btn-success btn-sm">
-                Ver
-            </a>
-        </td>
-    </tr>
-</table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
