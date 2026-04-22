@@ -69,25 +69,27 @@ public class AdminController {
                 return "admin";
             }
 
-            // Crear carpeta si no existe
-            String carpeta = "uploads/";
+            // Crear carpeta en la raíz del proyecto
+            String rutaBase = System.getProperty("user.dir");
+            String carpeta = rutaBase + File.separator + "uploads";
             File dir = new File(carpeta);
             if (!dir.exists()) dir.mkdirs();
 
-            // Guardar el archivo
+            // Guardar el archivo con nombre único
             String nombreArchivo = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-            String ruta = carpeta + nombreArchivo;
-            file.transferTo(new File(ruta));
+            String rutaCompleta = carpeta + File.separator + nombreArchivo;
+            file.transferTo(new File(rutaCompleta));
 
-            // Guardar en la base de datos
+            // Guardar en la base de datos (ruta relativa para servir)
+            String rutaRelativa = "uploads/" + nombreArchivo;
+
             Documento doc = new Documento();
             doc.setNombre(file.getOriginalFilename());
-            doc.setRuta(ruta);
+            doc.setRuta(rutaRelativa);
             doc.setUsuario(usuario);
 
             documentoRepo.save(doc);
 
-            model.addAttribute("success", "✅ Archivo subido correctamente");
             model.addAttribute("usuarios", usuarioRepo.findAll());
             model.addAttribute("documentos", documentoRepo.findAll());
 
