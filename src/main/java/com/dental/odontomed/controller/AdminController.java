@@ -48,26 +48,57 @@ public class AdminController {
 
     @PostMapping("/subir")
     public String subirArchivo(@RequestParam("file") MultipartFile file,
-                               @RequestParam("usuarioId") Long usuarioId) throws Exception {
+                               @RequestParam("usuarioId") Long usuarioId,
+                               Model model) {
 
-        String carpeta = "uploads/";
-        File dir = new File(carpeta);
+        try {
+            // Validar que el archivo no esté vacío
+            if (file.isEmpty()) {
+                model.addAttribute("error", "❌ El archivo no puede estar vacío");
+                model.addAttribute("usuarios", usuarioRepo.findAll());
+                model.addAttribute("documentos", documentoRepo.findAll());
+                return "admin";
+            }
 
-        if (!dir.exists()) dir.mkdirs();
+            // Validar que el usuario exista
+            Usuario usuario = usuarioRepo.findById(usuarioId).orElse(null);
+            if (usuario == null) {
+                model.addAttribute("error", "❌ El usuario con ID " + usuarioId + " no existe");
+                model.addAttribute("usuarios", usuarioRepo.findAll());
+                model.addAttribute("documentos", documentoRepo.findAll());
+                return "admin";
+            }
 
-        String ruta = carpeta + file.getOriginalFilename();
-        file.transferTo(new File(ruta));
+            // Crear carpeta si no existe
+            String carpeta = "uploads/";
+            File dir = new File(carpeta);
+            if (!dir.exists()) dir.mkdirs();
 
-        Documento doc = new Documento();
-        doc.setNombre(file.getOriginalFilename());
-        doc.setRuta(ruta);
+            // Guardar el archivo
+            String nombreArchivo = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            String ruta = carpeta + nombreArchivo;
+            file.transferTo(new File(ruta));
 
-        Usuario u = usuarioRepo.findById(usuarioId).get();
-        doc.setUsuario(u);
+            // Guardar en la base de datos
+            Documento doc = new Documento();
+            doc.setNombre(file.getOriginalFilename());
+            doc.setRuta(ruta);
+            doc.setUsuario(usuario);
 
-        documentoRepo.save(doc);
+            documentoRepo.save(doc);
 
-        return "redirect:/admin";
+            model.addAttribute("success", "✅ Archivo subido correctamente");
+            model.addAttribute("usuarios", usuarioRepo.findAll());
+            model.addAttribute("documentos", documentoRepo.findAll());
+
+            return "redirect:/admin?success=true";
+
+        } catch (Exception e) {
+            model.addAttribute("error", "❌ Error al subir el archivo: " + e.getMessage());
+            model.addAttribute("usuarios", usuarioRepo.findAll());
+            model.addAttribute("documentos", documentoRepo.findAll());
+            return "admin";
+        }
     }
 
 
