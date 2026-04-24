@@ -8,13 +8,13 @@
 
     <style>
         :root {
-            --azul-odontomed: #0d6efd;
-            --celeste-odontomed: #0dcaf0;
-            --azul-oscuro: #0d47a1;
+            --naranja-odontomed: #F28225;
+            --celeste-odontomed: #68BDCE;
+            --naranja-oscuro: #d97119;
         }
 
         .hero-nosotros {
-            background: linear-gradient(rgba(13, 110, 253, 0.8), rgba(13, 202, 240, 0.8)), url('img/clinica-bg.jpg');
+            background: linear-gradient(rgba(242, 130, 37, 0.8), rgba(104, 189, 206, 0.8)), url('img/clinica-bg.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -23,7 +23,7 @@
         }
 
         .section-title {
-            color: var(--azul-oscuro);
+            color: var(--naranja-odontomed);
             font-weight: bold;
             position: relative;
             padding-bottom: 15px;
@@ -46,18 +46,23 @@
             transition: transform 0.3s ease;
             border-radius: 15px;
             background: #f8f9fa;
+            border-left: 5px solid #F28225;
         }
 
         .card-valor:hover {
             transform: translateY(-10px);
             background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(242, 130, 37, 0.2);
         }
 
         .icon-box {
             font-size: 3rem;
-            color: var(--azul-odontomed);
+            color: var(--naranja-odontomed);
             margin-bottom: 20px;
+        }
+
+        .text-primary {
+            color: #F28225 !important;
         }
     </style>
 </head>
