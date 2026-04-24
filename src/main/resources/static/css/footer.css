@@ -3,9 +3,9 @@
    =========================================== */
 
 footer {
-    background: linear-gradient(135deg, var(--celeste-secundario), #5aadbc);
-    color: white;
-    margin-top: 120px;
+    background: #F28225 !important; /* Color naranja corregido */
+    color: white !important;
+    margin-top: 0px;
     padding-top: 80px;
     padding-bottom: 30px;
     border-radius: 30px 30px 0 0;
@@ -13,7 +13,7 @@ footer {
 }
 
 footer h5 {
-    color: white;
+    color: white !important;
     font-weight: 800;
     margin-bottom: 15px;
     position: relative;
@@ -33,7 +33,7 @@ footer h5::after {
 footer p {
     font-size: 0.95rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9) !important;
     margin-bottom: 8px;
 }
 
@@ -49,19 +49,16 @@ footer .navbar-brand img:hover {
 
 /* Iconos */
 footer i {
-    color: white;
+    color: white !important;
     transition: all 0.3s ease;
-}
-
-footer i:hover {
-    color: var(--naranja-primario);
 }
 
 /* Redes sociales */
 footer a {
-    color: white;
+    color: white !important;
     transition: all 0.3s ease;
     display: inline-block;
+    text-decoration: none;
 }
 
 footer a img {
@@ -73,14 +70,13 @@ footer a img {
 
 footer a:hover img {
     transform: scale(1.2) rotate(5deg);
-    filter: brightness(1) invert(0) sepia(0.3) hue-rotate(10deg);
 }
 
 /* Botón Previa Cita */
 .footer-previa {
     display: inline-block;
     background-color: white;
-    color: var(--naranja-primario);
+    color: #F28225 !important;
     padding: 10px 25px;
     border-radius: 25px;
     font-weight: bold;
@@ -90,8 +86,8 @@ footer a:hover img {
 }
 
 .footer-previa:hover {
-    background-color: var(--naranja-primario);
-    color: white;
+    background-color: #e67616;
+    color: white !important;
     transform: scale(1.08);
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
@@ -100,14 +96,17 @@ footer a:hover img {
 footer hr {
     border-color: rgba(255, 255, 255, 0.3);
     margin: 30px 0;
+    opacity: 1;
 }
 
 /* Derechos reservados */
-footer .text-center.py-3 {
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+footer .text-center.py-3,
+footer .border-top {
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
     margin-top: 20px;
     padding-top: 20px !important;
     font-size: 0.9rem;
+    color: white !important;
 }
 
 /* Responsive */
@@ -118,11 +117,43 @@ footer .text-center.py-3 {
     }
 
     footer h5 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     footer p {
         font-size: 0.85rem;
     }
 }
+/* Esto obliga a que el texto sea gris oscuro sin importar qué diga el index.css */
+footer h5,
+footer p,
+footer span,
+footer i,
+footer .fw-bold {
+    color: #333333 !important;
+}
+/* Redes sociales - Colores Originales */
+footer a img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
 
+    /* ELIMINAMOS TODOS LOS FILTROS */
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+footer a:hover img {
+    transform: scale(1.2) rotate(5deg);
+    /* Opcional: un brillo ligero al pasar el mouse */
+    filter: brightness(1.1);
+}
+
+/* Iconos de FontAwesome (Teléfono, Mapa) */
+/* Estos SI suelen ser de un solo color. Si quieres que sean gris oscuro: */
+footer i.fas,
+footer i.fab,
+footer i.fa {
+    color: #333333 !important;
+    filter: none !important;
+}

@@ -21,178 +21,114 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    color: var(--gris-oscuro);
-    background-color: var(--blanco);
+/* 1. ESTRUCTURA PARA PEGAR EL FOOTER ABAJO */
+html, body {
+    height: 100%;
 }
 
-/* Tipografía */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--blanco); /* Fondo general blanco para evitar franjas celestes */
+    color: var(--gris-oscuro);
+}
+
+/* El contenido principal crece, empujando el footer al fondo */
+main, .container-fluid, #inicio, section:first-of-type {
+    flex: 1 0 auto;
+}
+
+/* 2. TIPOGRAFÍA GENERAL */
 h1, h2, h3, h4, h5, h6 {
     color: var(--gris-oscuro);
     font-weight: 700;
 }
 
-h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-h5 {
-    font-size: 1.25rem;
-}
-
-/* Botones */
+/* 3. BOTONES Y COMPONENTES */
 .btn-primary {
     background-color: var(--naranja-primario) !important;
     border-color: var(--naranja-primario) !important;
     color: var(--blanco) !important;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--naranja-oscuro) !important;
-    transform: scale(1.05);
-    box-shadow: var(--sombra-lg);
-}
-
-.btn-warning {
-    background-color: var(--naranja-primario) !important;
-    border-color: var(--naranja-primario) !important;
-    color: var(--blanco) !important;
-}
-
-.btn-warning:hover {
-    background-color: var(--naranja-oscuro) !important;
 }
 
 .btn-info {
     background-color: var(--celeste-secundario) !important;
     border-color: var(--celeste-secundario) !important;
-    color: var(--blanco) !important;
 }
 
-.btn-info:hover {
-    background-color: var(--celeste-oscuro) !important;
+/* 4. AJUSTES ESPECÍFICOS DE SECCIONES */
+#inicio {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
-.btn-success {
-    background-color: #28a745 !important;
-    border-color: #28a745 !important;
+#heroCarousel {
+    margin: 0;
 }
 
-.btn-success:hover {
-    background-color: #218838 !important;
+#contacto {
+    margin-bottom: 0 !important;
+    padding-bottom: 5rem;
 }
 
-.btn-danger {
-    background-color: #dc3545 !important;
-    border-color: #dc3545 !important;
+/* 5. FOOTER (Reset global para no chocar con footer.css) */
+footer {
+    flex-shrink: 0;
+    width: 100%;
 }
 
-.btn-danger:hover {
-    background-color: #c82333 !important;
-}
-
-/* Badges */
-.bg-warning {
-    background-color: var(--naranja-primario) !important;
-}
-
-.bg-info {
-    background-color: var(--celeste-secundario) !important;
-}
-
-/* Cards */
-.card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: var(--sombra);
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--sombra-lg);
-}
-
-/* Tablas */
-.table-primary {
-    background-color: var(--celeste-secundario) !important;
-    color: var(--blanco);
-}
-
-.table-success {
-    background-color: var(--naranja-primario) !important;
-    color: var(--blanco);
-}
-
-/* Forms */
-.form-control {
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 12px;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: var(--naranja-primario);
-    box-shadow: 0 0 0 0.2rem rgba(242, 130, 37, 0.25);
-}
-
-/* Alerts */
-.alert {
-    border-radius: 10px;
-    border: none;
-}
-
-.alert-success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-.alert-info {
-    background-color: #d1ecf1;
-    color: #0c5460;
-}
-
-/* Secciones */
-section {
-    padding: 60px 0;
-}
-
-/* Gradientes */
-.gradient-naranja-celeste {
-    background: linear-gradient(135deg, var(--naranja-primario), var(--celeste-secundario));
-}
-
-.gradient-celeste-naranja {
-    background: linear-gradient(135deg, var(--celeste-secundario), var(--naranja-primario));
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    section { padding: 40px 0; }
+}
+/* ===========================================
+   BOTÓN FLOTANTE DE WHATSAPP (CORREGIDO)
+   =========================================== */
 
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    section {
-        padding: 40px 0;
-    }
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; /* Verde oficial WhatsApp */
+    color: white !important;
+    border-radius: 50%; /* Hace que sea un círculo perfecto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    z-index: 9999; /* Para que esté sobre el footer naranja */
+    transition: all 0.3s ease;
+    text-decoration: none !important; /* QUITA LA RAYA DEBAJO DEL ICONO */
+    border: none !important;        /* QUITA CUALQUIER BORDE BLANCO */
+    outline: none !important;
 }
 
+.whatsapp-float i {
+    margin: 0;
+    padding: 0;
+    line-height: 1; /* Centra el icono verticalmente */
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128C7E;
+    color: white !important;
+    text-decoration: none !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste para que no se vea raro en celulares */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+}
