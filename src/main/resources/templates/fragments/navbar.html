@@ -5,7 +5,28 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>navbar</title>
+    <style>
+        .navbar {
+            background-color: white !important;
+            border-radius: 0 0 15px 15px;
+        }
+        .btn-warning {
+            background-color: #F28225 !important;
+            border-color: #F28225 !important;
+        }
+        .btn-warning:hover {
+            background-color: #d97119 !important;
+        }
+        .btn-info {
+            background-color: #68BDCE !important;
+            border-color: #68BDCE !important;
+        }
+        .btn-info:hover {
+            background-color: #52a5b2 !important;
+        }
+    </style>
 </head>
 <body>
 <div th:fragment="navbar">
@@ -38,6 +59,14 @@
 
                     <!-- 🔐 LOGUEADO -->
                     <div sec:authorize="isAuthenticated()" class="d-flex align-items-center">
+
+                        <!-- BOTÓN PANEL/PERFIL -->
+                        <a sec:authorize="hasRole('ADMIN')" href="/admin" class="btn btn-warning btn-sm me-2">
+                            <i class="fas fa-cog"></i> Panel Admin
+                        </a>
+                        <a sec:authorize="hasRole('USER')" href="/perfil" class="btn btn-info btn-sm me-2">
+                            <i class="fas fa-user"></i> Mi Perfil
+                        </a>
 
                         <span class="text-dark fw-bold" th:text="${usuario.nombre}"></span>
 

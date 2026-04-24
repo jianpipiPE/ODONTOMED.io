@@ -16,7 +16,7 @@
 
         .sidebar {
             height: 100vh;
-            background: #0d6efd;
+            background: linear-gradient(135deg, #F28225 0%, #d97119 100%);
             color: white;
         }
 
@@ -25,14 +25,58 @@
             display: block;
             padding: 15px;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .sidebar a:hover {
-            background: #0b5ed7;
+            background: rgba(255,255,255,0.1);
+            padding-left: 20px;
         }
 
         .card {
             border-radius: 15px;
+            border-left: 5px solid #F28225;
+        }
+
+        .btn-primary {
+            background-color: #F28225 !important;
+            border-color: #F28225 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #d97119 !important;
+        }
+
+        .btn-success {
+            background-color: #68BDCE !important;
+            border-color: #68BDCE !important;
+        }
+
+        .btn-success:hover {
+            background-color: #52a5b2 !important;
+        }
+
+        .alert-success {
+            background-color: #68BDCE !important;
+            border-color: #68BDCE !important;
+        }
+
+        .table-primary {
+            background-color: #F28225 !important;
+            color: white !important;
+        }
+
+        .table-success {
+            background-color: #68BDCE !important;
+            color: white !important;
+        }
+
+        h5 {
+            color: #F28225;
+        }
+
+        .sidebar h4 {
+            color: white;
         }
     </style>
 </head>
