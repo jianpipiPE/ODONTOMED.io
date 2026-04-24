@@ -1,0 +1,118 @@
+/* ===========================================
+   ESTILOS DEL NAVBAR - OdontoMed
+   =========================================== */
+
+.navbar {
+    background-color: white !important;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1);
+}
+
+/* Links del navbar */
+.nav-link {
+    color: var(--gris-oscuro) !important;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--naranja-primario) !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--naranja-primario);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Botón Ingresar */
+.navbar .btn-primary {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Botones Panel/Perfil */
+.navbar .btn-warning,
+.navbar .btn-info {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.navbar .btn-warning:hover {
+    transform: scale(1.05);
+}
+
+.navbar .btn-info:hover {
+    transform: scale(1.05);
+}
+
+/* Nombre de usuario */
+.navbar .text-dark {
+    transition: color 0.3s ease;
+}
+
+/* Botón Salir */
+.navbar .btn-danger {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.navbar .btn-danger:hover {
+    transform: scale(1.05);
+}
+
+/* Badges */
+.navbar .badge {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background-color: var(--gris-claro);
+        border-radius: 0 0 15px 15px;
+        padding: 10px 0;
+        margin-top: 10px;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 5px 0;
+    }
+}
+

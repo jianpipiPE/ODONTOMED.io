@@ -1,0 +1,128 @@
+/* ===========================================
+   ESTILOS DEL FOOTER - OdontoMed
+   =========================================== */
+
+footer {
+    background: linear-gradient(135deg, var(--celeste-secundario), #5aadbc);
+    color: white;
+    margin-top: 120px;
+    padding-top: 80px;
+    padding-bottom: 30px;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+}
+
+footer h5 {
+    color: white;
+    font-weight: 800;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: white;
+}
+
+footer p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 8px;
+}
+
+/* Logo */
+footer .navbar-brand img {
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+footer .navbar-brand img:hover {
+    transform: scale(1.1);
+}
+
+/* Iconos */
+footer i {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+footer i:hover {
+    color: var(--naranja-primario);
+}
+
+/* Redes sociales */
+footer a {
+    color: white;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+footer a img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+footer a:hover img {
+    transform: scale(1.2) rotate(5deg);
+    filter: brightness(1) invert(0) sepia(0.3) hue-rotate(10deg);
+}
+
+/* Botón Previa Cita */
+.footer-previa {
+    display: inline-block;
+    background-color: white;
+    color: var(--naranja-primario);
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.footer-previa:hover {
+    background-color: var(--naranja-primario);
+    color: white;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Separadores */
+footer hr {
+    border-color: rgba(255, 255, 255, 0.3);
+    margin: 30px 0;
+}
+
+/* Derechos reservados */
+footer .text-center.py-3 {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 20px;
+    padding-top: 20px !important;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    footer {
+        margin-top: 80px;
+        padding-top: 60px;
+    }
+
+    footer h5 {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 0.85rem;
+    }
+}
+
