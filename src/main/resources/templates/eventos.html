@@ -1,47 +1,169 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <title>Eventos y Campañas - OdontoMed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --azul-odontomed: #0d6efd;
+            --celeste-odontomed: #0dcaf0;
+        }
+
+        /* Estilo del Carrusel */
+        .carousel-item {
+            height: 500px;
+            background-color: #333;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            opacity: 0.7; /* Para que resalte el texto */
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            bottom: 20%;
+        }
+
+        .carousel-caption h2 {
+            font-weight: 800;
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+
+        /* Sección Comunidad */
+        .seccion-orgullo {
+            background: linear-gradient(135deg, var(--azul-odontomed), var(--celeste-odontomed));
+            color: white;
+            padding: 80px 0;
+            border-radius: 50px 50px 0 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .display-comunidad {
+            font-weight: 900;
+            font-size: 3.5rem;
+            line-height: 1.1;
+        }
+
+        .subtitulo-comunidad {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
+
 <div th:replace="fragments/navbar :: navbar"></div>
-<!-- 📅 EVENTOS -->
-<div class="container mt-5">
 
-    <div class="row g-4">
+<div id="carruselCampanas" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-        <!-- EVENTO 1 -->
-        <div class="col-md-4">
-            <div class="card shadow p-3">
-                <h5>Campaña Gratuita</h5>
-                <p>Atención dental sin costo para niños de bajos recursos.</p>
-                <span class="badge bg-success">Disponible</span>
+        <div class="carousel-item active">
+            <img src="img/campana-madre.jpg" alt="Día de la Madre">
+            <div class="carousel-caption">
+                <h2>Día de la Madre</h2>
+                <p class="lead">Sonrisas que iluminan el hogar.</p>
             </div>
         </div>
 
-        <!-- EVENTO 2 -->
-        <div class="col-md-4">
-            <div class="card shadow p-3">
-                <h5>Charlas Educativas</h5>
-                <p>Aprende sobre higiene bucal y prevención.</p>
-                <span class="badge bg-primary">Próximamente</span>
+        <div class="carousel-item">
+            <img src="img/campana-padre.jpg" alt="Día del Padre">
+            <div class="carousel-caption">
+                <h2>Día del Padre</h2>
+                <p class="lead">Cuidando al héroe de la familia.</p>
             </div>
         </div>
 
-        <!-- EVENTO 3 -->
-        <div class="col-md-4">
-            <div class="card shadow p-3">
-                <h5>Descuentos Especiales</h5>
-                <p>Promociones en tratamientos dentales.</p>
-                <span class="badge bg-warning text-dark">Limitado</span>
+        <div class="carousel-item">
+            <img src="img/campana-navidad.jpg" alt="Navidad">
+            <div class="carousel-caption">
+                <h2>Navidad en OdontoMed</h2>
+                <p class="lead">El mejor regalo es una sonrisa saludable.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="img/campana-anonuevo.jpg" alt="Año Nuevo">
+            <div class="carousel-caption">
+                <h2>Año Nuevo</h2>
+                <p class="lead">Empieza el año con una nueva sonrisa.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="img/campana-aniversario.jpg" alt="Aniversario">
+            <div class="carousel-caption">
+                <h2>Aniversario</h2>
+                <p class="lead">Celebrando años de compromiso contigo.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="img/campana-trabajador.jpg" alt="Día del Trabajador">
+            <div class="carousel-caption">
+                <h2>Día del Trabajador</h2>
+                <p class="lead">Tu esfuerzo merece la mejor atención.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="img/campana-halloween.jpg" alt="Halloween">
+            <div class="carousel-caption">
+                <h2>Halloween</h2>
+                <p class="lead">¡Que nada te asuste, excepto una caries!</p>
             </div>
         </div>
 
     </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carruselCampanas" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carruselCampanas" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
 </div>
+
+<section class="seccion-orgullo text-center shadow-lg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <i class="fas fa-users fa-4x mb-4"></i>
+                <h2 class="display-comunidad mb-4">MÁS QUE PACIENTES, <br>SOMOS UNA COMUNIDAD</h2>
+                <p class="subtitulo-comunidad mb-5">
+                    En <strong>OdontoMed</strong>, nos sentimos profundamente orgullosos de la conexión que hemos construido con cada uno de ustedes. Cada campaña y cada evento es nuestra forma de agradecer la confianza que depositan en las manos de la doctora.
+                </p>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4">
+                        <h3 class="fw-bold">Excelencia</h3>
+                        <p>Comprometidos con la salud dental de nuestra población.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="fw-bold">Cercanía</h3>
+                        <p>Atención humana en cada fecha especial del año.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="fw-bold">Crecimiento</h3>
+                        <p>Creciendo juntos para una sociedad con mejores sonrisas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,22 +1,168 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Servicios</title>
+    <meta charset="UTF-8">
+    <title>Servicios - OdontoMed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Efecto de escalabilidad para los 9 cuadros */
+        .servicio-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .servicio-item:hover {
+            transform: scale(1.05); /* Efecto de agrandar */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .img-container {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body-custom {
+            padding: 20px;
+            text-align: center; /* Centrado para un diseño más limpio sin botón */
+        }
+
+        .titulo-servicio {
+            color: #0d47a1;
+            font-weight: bold;
+            font-size: 1.15rem;
+            margin: 0;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-light">
 
-<!-- NAVBAR -->
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container mt-5">
-    <h2>Servicios</h2>
-    <p>Aquí van tus servicios dentales...</p>
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h6 class="text-success fw-bold">Servicios</h6>
+        <h2 class="display-5 fw-bold text-primary">Nuestros Tratamientos</h2>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/ortodoncia1.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Ortodoncia Quirúrgica</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/ortodoncia2.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Ortodoncia Interceptiva</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/ortodoncia3.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Ortodoncia Preventiva</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/ortodoncia4.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Ortodoncia Invisible</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/ortodoncia5.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Endodoncia</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/ortodoncia6.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Brackets de Porcelana</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/limpieza.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Limpieza Dental</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/implantes.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Implantes Dentales</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 servicio-item shadow-sm">
+                <div class="img-container">
+                    <img src="img/estetica.jpg" alt="Servicio">
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="titulo-servicio">Blanqueamiento</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<!-- FOOTER -->
 <div th:replace="fragments/footer :: footer"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

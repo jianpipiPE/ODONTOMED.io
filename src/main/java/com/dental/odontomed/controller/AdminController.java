@@ -103,5 +103,36 @@ public class AdminController {
         }
     }
 
+    @PostMapping("/eliminar")
+    public String eliminarDocumento(@RequestParam("id") Long id, Model model) {
+        try {
+            // Buscar el documento
+            Documento documento = documentoRepo.findById(id).orElse(null);
+            if (documento == null) {
+                model.addAttribute("error", "❌ Documento no encontrado");
+                model.addAttribute("usuarios", usuarioRepo.findAll());
+                model.addAttribute("documentos", documentoRepo.findAll());
+                return "admin";
+            }
 
+            // Eliminar el archivo físico
+            String rutaBase = System.getProperty("user.dir");
+            String rutaCompleta = rutaBase + File.separator + documento.getRuta();
+            File archivo = new File(rutaCompleta);
+            if (archivo.exists()) {
+                archivo.delete();
+            }
+
+            // Eliminar de la base de datos
+            documentoRepo.delete(documento);
+
+            return "redirect:/admin?eliminado=true";
+
+        } catch (Exception e) {
+            model.addAttribute("error", "❌ Error al eliminar el documento: " + e.getMessage());
+            model.addAttribute("usuarios", usuarioRepo.findAll());
+            model.addAttribute("documentos", documentoRepo.findAll());
+            return "admin";
+        }
+    }
 }

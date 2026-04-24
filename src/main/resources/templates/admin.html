@@ -62,6 +62,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
 
+            <div th:if="${param.eliminado}" class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fa fa-trash"></i> <strong>¡Eliminado!</strong> Documento eliminado correctamente.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+
             <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
                 <i class="fa fa-exclamation-circle"></i> [[${error}]]
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -179,9 +184,12 @@
                                 <a th:href="@{'/' + ${doc.ruta}}" target="_blank" class="btn btn-sm btn-success">
                                     <i class="fa fa-eye"></i> Ver
                                 </a>
-                                <button class="btn btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i> Eliminar
-                                </button>
+                                <form th:action="@{'/admin/eliminar'}" method="post" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este documento?')">
+                                    <input type="hidden" name="id" th:value="${doc.id}">
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-trash"></i> Eliminar
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         </tbody>
